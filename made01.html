@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>组件的使用流程</h2>
+        <p>
+            1.注册：全局注册、局部注册
+            2.当做标签使用
+            3.组件模板中有且只有一个根元素，通常是div
+            4.组件的data选项应该是一个有返回值的函数，如果用对象，就会造成数据的共享。使用有返回值的函数，使用组件时会调用函数，返回一个值。这些值是相互独立的
+        </p>
+        <biaoqian></biaoqian>
+        <shuzu></shuzu>
+        <times></times>
+    </div>
+    <script src="./Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            components: {
+
+                'biaoqian': {
+                    template: '<h3>我是组件一的内容：</h3>'
+                },
+                'shuzu': {
+                    data() {
+                        return {
+                           arr:[1,2,3,4,5]
+                        }
+
+                    },
+                    template: `<h4>我是{{arr[0]}}</h4>`
+                },
+                'times': {
+                    data() {
+                        return{
+                            time:new Date()
+                        }
+                    },
+                    template: `<h4>北京时间:{{time}}</h4>`
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
